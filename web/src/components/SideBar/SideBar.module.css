@@ -1,0 +1,77 @@
+.sideBar {
+  position: fixed;
+  z-index: 3;
+
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+
+  width: 325px;
+  /* height: 100vh; */
+
+  /* default hidden */
+  transform: translateX(-325px);
+  transition: transform 200ms ease;
+
+  background: #f4f4f4;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.sideBar li {
+  line-height: 25px;
+  position: relative;
+}
+
+.sideBar li:active {
+  background-color: #ccc;
+}
+
+.sideBar li a {
+  padding: 15px;
+
+  color: #000;
+  text-decoration: none;
+
+  width: calc(100% - 30px);
+  height: 100%;
+
+  display: inline-block;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sideBar li .icon {
+  vertical-align: top;
+  display: inline-block;
+  font-size: 25px;
+}
+
+.sideBar li .icon i {
+  position: relative;
+  top: -1px;
+}
+
+.sideBar li .name {
+  vertical-align: top;
+  display: inline-block;
+  font-size: 22px;
+  margin-left: 15px;
+  font-family: var(--default-font);
+
+  line-height: 25px;
+
+  position: relative;
+  top: 1px;
+}
+
+.sideBar li.activeItem {
+  /* font-weight: 700; */
+  background-color: #ddd;
+}
+
+.sideBar li.activeItem a {
+  color: var(--main-theme-color) !important;
+}

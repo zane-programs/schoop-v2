@@ -1,0 +1,11 @@
+html,
+body {
+  margin: 0;
+  font-family: "Karla", sans-serif;
+}
+
+.mainHeading {
+  font-family: var(--heading-font);
+  font-size: 33px;
+  margin: 0 0 20px 0;
+}

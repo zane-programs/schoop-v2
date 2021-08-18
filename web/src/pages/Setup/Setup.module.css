@@ -1,0 +1,137 @@
+@media only screen and (max-width: 350px) {
+  .setupContainer h1.setupHeading {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 351px) and (max-width: 799px) {
+  .setupContainer h1.setupHeading {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .setupContainer h1.setupHeading {
+    font-size: 37px;
+  }
+}
+
+.setupContainer {
+  /* width: calc(100% - (2 * var(--app-padding))); */
+  width: auto;
+  height: auto;
+  padding: var(--app-padding);
+
+  background-color: var(--app-background-color);
+}
+
+.setupContainer h1.setupHeading {
+  font-family: var(--heading-font);
+  margin: 0px 0px 15px 0px;
+}
+
+.setupContainer .setupSubheading {
+  font-family: var(--heading-font);
+  font-size: 25px;
+  margin: 20px 0px 20px 0px;
+}
+
+.setupContainer .setupClassesTable {
+  margin-top: 15px;
+}
+
+/* Division Picker */
+.setupContainer select.divisionPicker {
+  /* -webkit-appearance: none; */
+  padding: 7px 10px 7px 10px;
+
+  font-size: 18px;
+  font-family: var(--default-font);
+
+  /* margin-bottom: 20px; */
+}
+
+.subheadingDescriptor {
+  font-family: var(--default-font);
+  font-size: 16px;
+}
+
+/* .setupClassesTableSaveButton {
+  -webkit-appearance: none;
+
+  width: 100%;
+  height: 50px;
+
+  padding: 5px 10px 5px 10px;
+  margin-top: 15px;
+
+  background: var(--main-theme-color);
+  color: #fff;
+
+  border: 2px solid var(--main-theme-color);
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  font-family: var(--heading-font);
+  font-size: 20px;
+  font-weight: 700;
+} */
+
+.nicknameInput {
+  font-family: var(--default-font);
+
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+
+  border-radius: 5px;
+  border: 1px solid #777;
+
+  padding: 5px 10px 5px 10px;
+
+  height: 25px;
+
+  width: calc(100% - (var(--app-padding)));
+
+  /* margin-left: 10px; */
+  margin-top: 5px;
+}
+
+.nicknameInputLabel {
+  font-family: var(--default-font);
+}
+
+.loadingOverlay {
+  /*z-index: 9999;*/ /* note to self: maybe make this a better number? */
+  background-color: rgba(244, 244, 244, 0.65);
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.loadingOverlay .centeredArea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loadingOverlay .centeredArea .spinnerHolder {
+  position: relative;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+}
+
+.loadingOverlay .centeredArea .spinnerMessage {
+  color: var(--main-theme-color);
+  font-family: var(--default-font);
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;
+
+  margin-top: 18px;
+}

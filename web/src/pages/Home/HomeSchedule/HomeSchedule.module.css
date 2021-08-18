@@ -1,0 +1,99 @@
+.homeSchedule {
+  background: #fff;
+  border-collapse: collapse;
+  border-radius: var(--today-table-border-radius);
+
+  width: 100%;
+  height: auto;
+  /*min-height: 425px;*/
+
+  table-layout: fixed; /* keeps all boxes equal */
+
+  border-radius: 10px;
+
+  /* fixes border radius */
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+  mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+  overflow: hidden;
+}
+
+.scheduleItem {
+  /* general schedule item */
+  cursor: default;
+  position: relative;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.scheduleItem:not(:first-child) {
+  /* all but first */
+  border-top: 1px solid #ccc;
+}
+
+.scheduleItem.scheduleItemLight {
+  /* light color schedule item */
+  color: #000;
+}
+
+.scheduleItem.scheduleItemDark {
+  /* dark color schedule item */
+  color: #fff;
+}
+
+.scheduleItem.scheduleItemWithLink {
+  cursor: pointer;
+}
+
+.scheduleItem td.eventSignifier {
+  font-family: var(--heading-font);
+  /* top right bottom left */
+  padding: 12px 0px 12px 22px;
+  text-align: left;
+}
+
+.scheduleItem td.eventName {
+  font-family: var(--default-font);
+  /* font-weight: 700; */
+  text-align: center;
+}
+
+.scheduleItem td.eventTimespan {
+  font-family: var(--default-font);
+  text-align: right;
+}
+
+.scheduleItem td.eventName,
+.scheduleItem td.eventTimespan {
+  /* top right bottom left */
+  padding: 12px 22px 12px 0px;
+}
+
+/* Media queries */
+
+@media only screen and (max-width: 599px) {
+  table.homeSchedule tr {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 779px) {
+  table.homeSchedule tr {
+    font-size: 18px;
+  }
+}
+
+/* SPECIAL query */
+@media only screen and (min-width: 780px) {
+  table.homeSchedule tr {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  table.homeSchedule {
+    min-height: 425px;
+  }
+}

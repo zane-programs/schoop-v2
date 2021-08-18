@@ -1,0 +1,16 @@
+.appSubcontainer {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: filter 200ms ease;
+}
+
+.appSubcontainer.obscured {
+  filter: brightness(0.5);
+  user-select: none;
+  cursor: default;
+}
+
+.appSubcontainer.obscured * {
+  /* stop clicking of other things */
+  pointer-events: none;
+}
