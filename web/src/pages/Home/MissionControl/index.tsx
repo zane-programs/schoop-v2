@@ -1,15 +1,32 @@
+import { useContext } from "react";
+
 // hooks
-import useDate from "../../hooks/useDate";
-import { generateTimeFromDate } from "../../util/date";
+import useDate from "../../../hooks/useDate";
+
+// context
+import { HomeContext } from "..";
+
+// util
+import { generateTimeFromDate } from "../../../util/date";
+
+// types
+import { Spacetime } from "spacetime";
+
+// styles
+import styles from "./MissionControl.module.css";
 
 export default function MissionControl() {
   const date = useDate();
+  const { studentInfo } = useContext(HomeContext);
 
   return (
     <div>
-      <h1 className="mainHeading">Your Schoop</h1>
+      {/* <h1 className="mainHeading">Your Schoop</h1> */}
+      <div className={styles.missionControlGreeting}>
+        Good {getTimeOfDay(date)}, {studentInfo.nickname}
+      </div>
       <div
-        className="gridded-mission-control fix-border-radius"
+        className={styles.missionControlMain + " fixBorderRadius"}
         // TODO: relate this to size of HomeSchedule table
         style={{ height: "425px" }}
       >
@@ -61,3 +78,16 @@ export default function MissionControl() {
     </div>
   );
 }
+
+// TODO: clean this method up
+// gets time of day from Spacetime ("evening", "morning", or "afternoon")
+const getTimeOfDay = (date: Spacetime) => {
+  const hour = date.hour();
+  if ((hour >= 17 && hour <= 23) || (hour >= 0 && hour < 5)) {
+    return "evening";
+  } else if (hour >= 5 && hour < 12) {
+    return "morning";
+  } else {
+    return "afternoon";
+  }
+};

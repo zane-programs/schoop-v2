@@ -63,7 +63,7 @@ export default class StudentAdapter {
           StudentAdapter.isClassValid(currentClassInGivenList)
         ) {
           console.log(
-            currentClassInGivenList.period + " is not valid",
+            currentClassInGivenList.period + " is valid",
             currentClassInGivenList
           );
           // class in current list exists
@@ -163,7 +163,9 @@ export default class StudentAdapter {
   }
 
   private static isClassValid(studentClass: StudentClass | undefined) {
-    return studentClass?.className !== "" && studentClass?.zoomLink !== "";
+    // return studentClass?.className !== "" && studentClass?.zoomLink !== "";
+    // link is not needed to be valid! just class name (for now)
+    return studentClass?.className !== "";
   }
 
   static getStudentDivisionName(grade: number) {

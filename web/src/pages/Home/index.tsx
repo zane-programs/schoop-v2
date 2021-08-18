@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useMemo } from "react";
 
 // hooks
 import usePageTitle from "../../hooks/usePageTitle";
@@ -27,10 +27,14 @@ export default function Home() {
     AuthenticatedLayoutContext
   );
 
-  const [studentInfo, studentInfoLoading, studentInfoError] =
-    studentInfoHookValue;
-  const [studentClasses, studentClassesLoading, studentClassesError] =
-    studentClassesHookValue;
+  const [studentInfo, studentInfoLoading, studentInfoError] = useMemo(
+    () => studentInfoHookValue,
+    [studentInfoHookValue]
+  );
+  const [studentClasses, studentClassesLoading, studentClassesError] = useMemo(
+    () => studentClassesHookValue,
+    [studentClassesHookValue]
+  );
 
   // set page title
   useEffect(() => {

@@ -1,7 +1,4 @@
-import React from "react";
-
 // icons
-// import { MdPerson, MdHome } from "react-icons/md";
 import {
   HomeIcon,
   UserIcon,

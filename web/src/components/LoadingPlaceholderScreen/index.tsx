@@ -33,9 +33,8 @@ function LoadingPlaceholderScreen(props: LoadingPlaceholderScreenProps) {
       width: props.independent
         ? width
         : width - 2 * removePx(appConfig.appPadding),
-      height: props.independent
-        ? height
-        : height - 2 * removePx(appConfig.appPadding),
+      height: props.independent ? height : "var(--container-height)",
+      // : height - 2 * removePx(appConfig.appPadding),
     };
 
     // set background color if it is an independent loader screen
@@ -74,15 +73,7 @@ function LoadingPlaceholderScreen(props: LoadingPlaceholderScreenProps) {
       className={styles.loadingPlaceholderScreen}
       style={loadingPlaceholderScreenStyle}
     >
-      <div
-        className={styles.centeredArea}
-        style={{
-          top: props.independent
-            ? "50%" // if it is an independent component
-            : `calc(50% - ${2 * removePx(appConfig.appPadding)}px`, // if it is within the authenticated layout
-          left: "50%",
-        }}
-      >
+      <div className={styles.centeredArea}>
         <div className={styles.centeredAreaInner}>
           <div className={styles.spinnerHolder}>
             <LoadingSpinner

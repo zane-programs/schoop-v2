@@ -1,10 +1,10 @@
-import ScheduleItem from "./ScheduleItem"
+import ScheduleItem from "./ScheduleItem";
 
 export interface StudentScheduleWithMessage {
-  message: string
+  message: string;
 }
 
 // either an actual schedule or just a message
-type StudentSchedule = ScheduleItem[] | StudentScheduleWithMessage
+type StudentSchedule = ScheduleItem[] | StudentScheduleWithMessage;
 
-export default StudentSchedule
+export default StudentSchedule;
