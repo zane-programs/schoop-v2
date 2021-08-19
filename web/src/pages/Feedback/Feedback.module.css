@@ -1,5 +1,8 @@
 .feedbackForm {
   width: 100%;
   /* height of the main container (calculated in AuthenticatedLayout() in src/App.tsx) */
-  height: var(--container-height);
+  /* height: var(--container-height); */
+  height: 1000px;
+  border: none;
+  overflow: hidden;
 }
