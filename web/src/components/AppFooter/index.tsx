@@ -24,7 +24,7 @@ function AppFooter() {
           <strong>
             {appName} v{packageJson.version}
           </strong>{" "}
-          | &copy; {year} Schoop Contributors |{" "}
+          | &copy; {year} |{" "}
           <GoogleAnalyticsEventLogger
             category="Navigation"
             action="OpenOutboundLink"
