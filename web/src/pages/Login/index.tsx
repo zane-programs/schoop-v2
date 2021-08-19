@@ -24,6 +24,7 @@ import PageContext from "../../context/PageContext";
 
 // util
 import CustomSwal from "../../util/CustomSwal";
+import { appConfig } from "../../config";
 
 // styles
 import styles from "./Login.module.css";
@@ -110,7 +111,7 @@ export default function Login() {
       className={styles.loginContainer}
     >
       <div className={styles.centeredContainer}>
-        <h1 className={styles.appName}>Schoop</h1>
+        <h1 className={styles.appName}>{appConfig.appName}</h1>
         <button
           onClick={handleLogIn}
           className={logInButtonClass + logInButtonVisibility}

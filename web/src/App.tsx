@@ -253,6 +253,7 @@ function AuthenticatedLayout() {
                   backgroundColor: appConfig.backgroundColor,
                   minHeight: `${minHeight}px`,
                   overflowX: "hidden",
+                  fontFamily: "var(--default-font)",
                   ...styleVars,
                 }}
               >
