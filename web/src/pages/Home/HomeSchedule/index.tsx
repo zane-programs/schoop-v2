@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect, useMemo } from "react";
-import spacetime from "spacetime";
+import { useState, useContext, useEffect, useMemo, createContext } from "react";
+import spacetime, { Spacetime } from "spacetime";
 
 // interfaces
 import { StudentScheduleWithMessage } from "../../../interfaces/StudentSchedule";
@@ -8,16 +8,13 @@ import ScheduleItem from "../../../interfaces/ScheduleItem";
 // hooks
 import useDate from "../../../hooks/useDate";
 
-// util
-import { getFormattedDateString } from "../../../util/date";
-
 // context
 import { HomeContext } from "..";
 
 // components
+import DateSwitcher from "./DateSwitcher";
 import ScheduleItemComponent from "./ScheduleItemComponent";
 import ScheduleMessage from "./ScheduleMessage";
-import { ArrowLeftIcon, ArrowRightIcon } from "react-line-awesome";
 
 // styles
 import styles from "./HomeSchedule.module.css";
@@ -79,7 +76,7 @@ function HomeSchedule() {
   const currentDate = useDate();
   const { studentClasses } = useContext(HomeContext);
 
-  const [viewedDate, setViewedDate] = useState(spacetime.now());
+  const [viewedDate, setViewedDate] = useState<Spacetime>(spacetime.now());
 
   // this is a placeholder for now
   const currentSchedule: ImmutableStudentSchedule = useMemo(
@@ -130,47 +127,23 @@ function HomeSchedule() {
       setViewedDate(spacetime.now());
   }, [currentDate, setViewedDate]);
 
-  // const selectedDateIsToday = useMemo(
-  //   () => datesAreOnSameDay(viewedDate, currentDate),
-  //   [viewedDate, currentDate]
-  // );
-
-  // const formattedDateString = useMemo(
-  //   () => getShorterFormattedDateString(viewedDate),
-  //   [viewedDate]
-  // );
-
   return (
-    <div>
-      {/* <h1 className="mainHeading">Your Schedule</h1> */}
-      <div className={styles.dateSwitcher}>
-        <button
-          className={styles.left}
-          onClick={() => setViewedDate(viewedDate.subtract(1, "day"))}
-        >
-          <ArrowLeftIcon />
-        </button>
-        <div className={styles.viewedDate}>
-          {getFormattedDateString(viewedDate)}
-        </div>
-        <button
-          className={styles.right}
-          onClick={() => setViewedDate(viewedDate.add(1, "day"))}
-        >
-          <ArrowRightIcon />
-        </button>
+    <HomeScheduleContext.Provider value={{ viewedDate, setViewedDate }}>
+      <div>
+        <DateSwitcher />
+        <table className={styles.homeSchedule + " fixBorderRadius"}>
+          <tbody>{scheduleItemComponents}</tbody>
+        </table>
       </div>
-      <table className={styles.homeSchedule + " fixBorderRadius"}>
-        <tbody>{scheduleItemComponents}</tbody>
-      </table>
-    </div>
+    </HomeScheduleContext.Provider>
   );
 }
 
-export default HomeSchedule;
+export const HomeScheduleContext = createContext(
+  {} as {
+    viewedDate: Spacetime;
+    setViewedDate: React.Dispatch<React.SetStateAction<Spacetime>>;
+  }
+);
 
-// check whether two dates are on the same day
-// const datesAreOnSameDay = (first: Spacetime, second: Spacetime) =>
-//   first.year() === second.year() &&
-//   first.month() === second.month() &&
-//   first.date() === second.date();
+export default HomeSchedule;

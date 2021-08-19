@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 
 // global styles
 import "./global.css";
+import "focus-visible";
 
 // init error reporting
 Sentry.init({
