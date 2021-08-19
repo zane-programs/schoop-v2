@@ -1,7 +1,7 @@
-import React, { useContext, useState, useMemo, useEffect, useRef } from "react";
+import { useContext, useState, useMemo, useEffect, useRef } from "react";
 
 // context
-import { AuthContext } from "../../auth/AuthProvider";
+// import { AuthContext } from "../../auth/AuthProvider";
 import { AuthenticatedLayoutContext } from "../../App";
 
 // firebase
@@ -24,8 +24,11 @@ import useStudentAdapter from "../../hooks/useStudentAdapter";
 import StudentAdapter from "../../util/StudentAdapter";
 import studentDivisions from "../../config/studentDivisions";
 
+// styles
+import styles from "./Profile.module.css";
+
 export default function Profile() {
-  const auth = useContext(AuthContext);
+  // const auth = useContext(AuthContext);
   const studentAdapter = useStudentAdapter();
   const { setTitle } = usePageTitle();
   const { studentInfoHookValue, studentClassesHookValue } = useContext(
@@ -59,11 +62,14 @@ export default function Profile() {
       .then(() => setClassesTableShowingLoadingOverlay(false));
   }, [studentAdapter, studentClassesInState]);
 
-  const [studentInfo, studentInfoLoading, studentInfoError] =
-    studentInfoHookValue;
-  const [studentClasses, studentClassesLoading, studentClassesError] =
-    studentClassesHookValue;
-
+  const [studentInfo, studentInfoLoading, studentInfoError] = useMemo(
+    () => studentInfoHookValue,
+    [studentInfoHookValue]
+  );
+  const [studentClasses, studentClassesLoading, studentClassesError] = useMemo(
+    () => studentClassesHookValue,
+    [studentClassesHookValue]
+  );
   // set page title
   useEffect(() => {
     setTitle("Profile");
@@ -83,7 +89,7 @@ export default function Profile() {
     );
     return (
       <SetupClassesTable
-        periodNumbers={divisionInfo?.periods || ([] as number[])}
+        periodNumbers={divisionInfo?.periods || []}
         initialClassList={studentClasses}
         showSaveButton={true}
         saveButtonText="Save"
@@ -103,11 +109,7 @@ export default function Profile() {
   ) : (
     <div>
       <h1 className="mainHeading">Profile</h1>
-      {/* <img
-        src={auth.currentUser?.photoURL as string}
-        alt={auth.currentUser?.displayName as string}
-        style={{ width: 110, height: 110, borderRadius: "50%" }}
-      /> */}
+      <h2 className={styles.subheading}>Classes</h2>
       <SetupClassesTableContext.Provider
         value={{
           classes: studentClassesInState,
@@ -116,12 +118,26 @@ export default function Profile() {
       >
         {setupClassesTable}
       </SetupClassesTableContext.Provider>
-      <p>
-        User is {auth.currentUser?.displayName} with email{" "}
-        {auth.currentUser?.email}
-      </p>
-      <p>{JSON.stringify(studentInfo)}</p>
-      <p>{JSON.stringify(studentClasses)}</p>
+      <PrivacyArea />
     </div>
+  );
+}
+
+function PrivacyArea() {
+  return (
+    <>
+      <h2 className={styles.subheading}>Privacy</h2>
+      <p>
+        In compliance with California privacy laws, Schoop allows students to
+        delete their accounts. If you have any questions about this, please{" "}
+        <a href="mailto:zstjohn22@windwardschool.org">let us know</a>, and we
+        will try to help you to the best of our ability.{" "}
+        <strong>
+          Deleting your account irreversible, and we will not be able to restore
+          your data once you have done so.
+        </strong>
+      </p>
+      <button className={styles.deleteAccountButton}>Delete Account</button>
+    </>
   );
 }

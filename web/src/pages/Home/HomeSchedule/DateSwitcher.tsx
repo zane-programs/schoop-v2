@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { memo, useContext, useMemo } from "react";
 
 // components
 import { ArrowLeftIcon, ArrowRightIcon } from "react-line-awesome";
@@ -16,7 +16,7 @@ import { Spacetime } from "spacetime";
 // styles
 import styles from "./HomeSchedule.module.css";
 
-export default function DateSwitcher() {
+function DateSwitcher() {
   const { viewedDate } = useContext(HomeScheduleContext);
 
   return (
@@ -31,6 +31,8 @@ export default function DateSwitcher() {
     </div>
   );
 }
+
+export default memo(DateSwitcher);
 
 function DateSwitcherButton({
   dateAction,

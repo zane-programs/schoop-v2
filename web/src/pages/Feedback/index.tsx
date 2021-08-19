@@ -32,7 +32,7 @@ export default function Feedback() {
     <>
       {loadingElem}
       <iframe
-        src="https://tally.so/embed/wMblEn?hideTitle=1&alignLeft=1"
+        src="https://tally.so/embed/wMblEn?hideTitle=1&alignLeft=1&transparentBackground=1"
         title="Schoop Feedback"
         scrolling="no"
         className={styles.feedbackForm}
