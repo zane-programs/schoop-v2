@@ -26,54 +26,82 @@ export default function MissionControl() {
         Good {getTimeOfDay(date)}, {studentInfo.nickname}
       </div>
       <div
-        className={styles.missionControlMain + " fixBorderRadius"}
+        className={styles.missionControlMain}
         // TODO: relate this to size of HomeSchedule table
         style={{ height: "425px" }}
       >
-        <div className="mission-control-part current-status">
-          <div className="mission-control-status-container now">
-            <h4>
-              Now:&nbsp;<span className="event-signifier">-----</span>
-            </h4>
-            <div className="mission-control-status-field-container">
-              <div className="mission-control-status-field time">
-                {generateTimeFromDate(date, " ")}
-              </div>
-              <div className="mission-control-status-field event">-----</div>
-            </div>
-          </div>
-          <div className="mission-control-status-container up-next">
-            <h4>
-              Up Next:&nbsp;<span className="event-signifier">-----</span>
-            </h4>
-            <div className="mission-control-status-field-container">
-              <div className="mission-control-status-field time">-----</div>
-              <div className="mission-control-status-field event">-----</div>
-            </div>
-          </div>
+        {/* Now and Up Next */}
+        <StatusCard />
+
+        {/* QOTD and Twitter */}
+        <QOTDAndTwitterCard />
+      </div>
+    </div>
+  );
+}
+
+function StatusCard() {
+  const date = useDate();
+
+  return (
+    <div
+      className={
+        styles.missionControlCard +
+        " " +
+        styles.statusContainer +
+        " fixBorderRadius"
+      }
+    >
+      <StatusCardPart title="Now" date={date} />
+      <StatusCardPart title="Up Next" />
+    </div>
+  );
+}
+
+function StatusCardPart({ date, title }: { date?: Spacetime; title: string }) {
+  return (
+    <div className={styles.containerPart}>
+      <h4 className={styles.eventHeading}>
+        {title}:&nbsp;<span className="event-signifier">-----</span>
+      </h4>
+      <div className={styles.statusFieldContainer}>
+        <div className={styles.time}>
+          {date ? generateTimeFromDate(date, " ") : "-----"}
         </div>
-        <div className="mission-control-part qotd">
-          <div className="quote-content">
-            "
-            <span>
-              Accept the challenges so that you can feel the exhilaration of
-              victory.
-            </span>
-            "
-          </div>
-          <div className="quote-author">
-            –<span>George S. Patton</span>
-          </div>
+        <div className={styles.eventName}>-----</div>
+      </div>
+    </div>
+  );
+}
+
+function QOTDAndTwitterCard() {
+  return (
+    <div
+      className={
+        styles.missionControlCard +
+        " " +
+        styles.qotdAndTwitterCard +
+        " fixBorderRadius"
+      }
+    >
+      <div className={styles.qotd}>
+        <div className={styles.content}>
+          &ldquo;Accept the challenges so that you can feel the exhilaration of
+          victory.&rdquo;
         </div>
-        <div className="mission-control-part twitter-feed">
-          <iframe
-            width="100%"
-            height="100%"
-            frameBorder={0}
-            src={process.env.PUBLIC_URL + "/ww-twitter.html"}
-            title="Windward Twitter"
-          />
+        <div className={styles.author}>
+          &ndash;<span>George S. Patton</span>
         </div>
+      </div>
+
+      <div className="mission-control-part twitter-feed">
+        <iframe
+          width="100%"
+          height="100%"
+          frameBorder={0}
+          src={process.env.PUBLIC_URL + "/ww-twitter.html"}
+          title="Windward Twitter"
+        />
       </div>
     </div>
   );

@@ -37,6 +37,7 @@ export default function Feedback() {
         scrolling="no"
         className={styles.feedbackForm}
         onLoad={() => setIsLoading(false)}
+        style={{ display: isLoading ? "none" : undefined }}
       ></iframe>
     </>
   );

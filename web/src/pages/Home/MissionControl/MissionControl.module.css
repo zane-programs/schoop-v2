@@ -12,10 +12,75 @@
 }
 
 .missionControlMain {
-  background-color: #fff;
   display: grid;
 
-  grid-template-rows: 2fr 5fr;
+  grid-template-rows: 5fr 10fr;
+  grid-row-gap: 10px;
 
   min-height: 425px;
+}
+
+.missionControlMain .missionControlCard {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.missionControlMain .statusContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.statusContainer .containerPart {
+  position: relative;
+}
+
+.statusContainer .containerPart:first-child {
+  border-right: 1px solid #ccc;
+}
+
+.containerPart .eventHeading {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 0.9em;
+  font-family: var(--heading-font);
+}
+
+.containerPart .statusFieldContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.statusFieldContainer .time {
+  font-size: 25px;
+  font-family: var(--heading-font);
+  font-weight: 400;
+}
+
+.statusFieldContainer .eventName {
+  font-size: 20px;
+}
+
+.missionControlMain .qotdAndTwitterCard {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.qotdAndTwitterCard .qotd {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.qotd .content {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 7px;
+}
+
+.qotd .author {
+  font-size: 16px;
+  font-weight: 700;
 }
