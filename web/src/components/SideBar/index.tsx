@@ -38,7 +38,10 @@ function SideBar({ isVisible }: SideBarProps) {
 
   // also memoized (for performance)
   const style = useMemo(() => {
-    let style: React.CSSProperties = { height };
+    let style: React.CSSProperties = {
+      height: `calc(env(safe-area-inset-top, 0px) + ${height}px)`,
+      paddingTop: `env(safe-area-inset-top, 0px)`,
+    };
     if (isVisible) {
       style.transform = "translateX(0px)";
     }

@@ -1,7 +1,7 @@
 .navBar {
   /* stuff */
   width: 100%;
-  height: var(--navbar-height);
+  height: calc(env(safe-area-inset-top, 0px) + var(--navbar-height));
   /* height: 78px; */
   /* position: fixed; */
   position: sticky;
@@ -27,6 +27,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  transform: translateY(calc(env(safe-area-inset-top, 0px) / 2));
 }
 
 .navBarTitle {

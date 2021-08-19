@@ -40,9 +40,13 @@ function NavBar() {
   const scrollPosition = useScrollPosition();
   const appConfig = useContext(AppConfigContext); // config context
 
-  let navBarClassName = styles.navBar;
-  if (scrollPosition > 5) navBarClassName += " " + styles.navBarScrolled;
-  if (windowDimensions.width < 800) navBarClassName += " " + styles.navBarSmall;
+  const navBarClass = useMemo(() => {
+    let navBarClassName = styles.navBar;
+    if (scrollPosition > 5) navBarClassName += " " + styles.navBarScrolled;
+    if (windowDimensions.width < 800)
+      navBarClassName += " " + styles.navBarSmall;
+    return navBarClassName;
+  }, [scrollPosition, windowDimensions.width]);
 
   return (
     <>
@@ -53,7 +57,7 @@ function NavBar() {
         className={styles.navTooltip}
       />
       <nav
-        className={navBarClassName}
+        className={navBarClass}
         style={{ backgroundColor: appConfig.themeColor }}
       >
         <div className={styles.navBarInner}>
@@ -107,7 +111,11 @@ function SideBarButton() {
   return (
     <button
       className={styles.sideBarButton}
-      onClick={() => requestAnimationFrame(() => { if (setVisibility) setVisibility(!isVisible) })}
+      onClick={() =>
+        requestAnimationFrame(() => {
+          if (setVisibility) setVisibility(!isVisible);
+        })
+      }
     >
       <BarsIcon />
       <ScreenReaderText>Menu</ScreenReaderText>
