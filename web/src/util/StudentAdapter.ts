@@ -12,6 +12,7 @@ import studentDivisions from "../config/studentDivisions";
 // interfaces
 import StudentClass from "../interfaces/StudentClass";
 import StudentInfo from "../interfaces/StudentInfo";
+import { WWResourceItemInterface } from "../pages/WWResources";
 
 export default class StudentAdapter {
   private db: firebase.firestore.Firestore;
@@ -151,6 +152,17 @@ export default class StudentAdapter {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     return useCollectionData<StudentClass>(
       this.getUserDocRef().collection("classes"),
+      {
+        snapshotListenOptions: { includeMetadataChanges: true },
+      }
+    );
+  }
+
+  // React hook
+  useWWResources() {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    return useCollectionData<WWResourceItemInterface>(
+      this.db.collection("wwResources"),
       {
         snapshotListenOptions: { includeMetadataChanges: true },
       }

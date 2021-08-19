@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo } from "react";
-import useSWR from "swr";
+import { useEffect, useMemo } from "react";
+// import useSWR from "swr";
 
 // components
 import LoadingPlaceholderScreen from "../../components/LoadingPlaceholderScreen";
@@ -7,15 +7,16 @@ import LoadingPlaceholderScreen from "../../components/LoadingPlaceholderScreen"
 
 // hooks
 import usePageTitle from "../../hooks/usePageTitle";
+import useStudentAdapter from "../../hooks/useStudentAdapter";
 
 // util
-import schoopInfoAPIFetcher from "../../util/schoopInfoAPIFetcher";
+// import schoopInfoAPIFetcher from "../../util/schoopInfoAPIFetcher";
 import NewTabLink from "../../components/NewTabLink";
 
 // context
 // import { AuthenticatedLayoutContext } from "../../App";
 
-interface WWResourceItemInterface {
+export interface WWResourceItemInterface {
   name: string;
   description: string;
   link: string;
@@ -24,7 +25,11 @@ interface WWResourceItemInterface {
 export default function WWResources() {
   // const layout = useContext(AuthenticatedLayoutContext);
   const { setTitle } = usePageTitle();
-  const { data, error } = useSWR("/tabs/resources", schoopInfoAPIFetcher);
+  // const { data, error } = useSWR("/tabs/resources", schoopInfoAPIFetcher);
+
+  const studentAdapter = useStudentAdapter();
+
+  const [data, loading, error] = studentAdapter.useWWResources();
 
   const wwResourceList = useMemo(
     () => data as WWResourceItemInterface[],
@@ -41,7 +46,7 @@ export default function WWResources() {
   // }, [layout, data, isValidating]);
 
   if (error) return <div>Error Fetching Data</div>; // SetupLoadingOverlay
-  if (!data)
+  if (loading)
     return <LoadingPlaceholderScreen title="Loading Windward Resources..." />;
 
   return (
