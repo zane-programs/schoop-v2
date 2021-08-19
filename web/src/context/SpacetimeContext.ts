@@ -1,7 +1,7 @@
-import { createContext } from "react"
-import spacetime from "spacetime"
+import { createContext } from "react";
+import spacetime from "spacetime";
 
 // holds a spacetime object
-const SpacetimeContext = createContext(spacetime.now())
+const SpacetimeContext = createContext(spacetime.now());
 
-export default SpacetimeContext
+export default SpacetimeContext;

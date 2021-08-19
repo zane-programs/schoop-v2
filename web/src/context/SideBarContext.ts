@@ -1,15 +1,15 @@
-import { createContext, Dispatch, SetStateAction } from "react"
+import { createContext, Dispatch, SetStateAction } from "react";
 
 interface SideBarContextConfig {
-  isVisible: boolean
-  setVisibility?: Dispatch<SetStateAction<boolean>>
+  isVisible: boolean;
+  setVisibility?: Dispatch<SetStateAction<boolean>>;
 }
 
 const config: SideBarContextConfig = {
-  isVisible: false
-}
+  isVisible: false,
+};
 
 // holds a Date object
-const SideBarContext = createContext(config)
+const SideBarContext = createContext(config);
 
-export default SideBarContext
+export default SideBarContext;

@@ -1,19 +1,19 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
 interface PageContextConfig {
-  title: string | null
-  setTitle: Function
-  isInitialLoad: boolean
-  setIsInitialLoad: Function
+  title: string | null;
+  setTitle: Function;
+  isInitialLoad: boolean;
+  setIsInitialLoad: Function;
 }
 
 const initialPageContext: PageContextConfig = {
   title: null,
-  setTitle: () => { },
+  setTitle: () => {},
   isInitialLoad: true,
-  setIsInitialLoad: () => { }
-}
+  setIsInitialLoad: () => {},
+};
 
-const PageContext = createContext(initialPageContext)
+const PageContext = createContext(initialPageContext);
 
-export default PageContext
+export default PageContext;

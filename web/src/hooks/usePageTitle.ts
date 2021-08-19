@@ -1,17 +1,17 @@
-import { useContext, useEffect } from "react"
-import PageContext from "../context/PageContext"
+import { useContext, useEffect } from "react";
+import PageContext from "../context/PageContext";
 
 export default function usePageTitle() {
-  const { title, setTitle } = useContext(PageContext)
+  const { title, setTitle } = useContext(PageContext);
 
   useEffect(() => {
     return () => {
       // set title to empty on
       // component unmount
-      setTitle(null)
-    }
-  }, [setTitle])
+      setTitle(null);
+    };
+  }, [setTitle]);
 
   // pass on context info
-  return { title, setTitle }
+  return { title, setTitle };
 }

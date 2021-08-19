@@ -17,12 +17,12 @@
  * © 2020 MyFonts Inc
 */
 
-
 /* @import must be at top of file, otherwise CSS will not work */
 @import url("//hello.myfonts.net/count/3b6fc7");
-  
+
 @font-face {
-  font-family: 'Gilroy-ExtraBold';
-  src: url('webFonts/Gilroy-ExtraBold/font.woff2') format('woff2'), url('webFonts/Gilroy-ExtraBold/font.woff') format('woff');
+  font-family: "Gilroy-ExtraBold";
+  src: url("webFonts/Gilroy-ExtraBold/font.woff2") format("woff2"),
+    url("webFonts/Gilroy-ExtraBold/font.woff") format("woff");
   font-weight: 700;
 }

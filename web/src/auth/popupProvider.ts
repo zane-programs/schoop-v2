@@ -1,10 +1,10 @@
-import firebase from "firebase/app"
-import "firebase/auth"
+import firebase from "firebase/app";
+import "firebase/auth";
 
-const popupProvider = new firebase.auth.GoogleAuthProvider()
+const popupProvider = new firebase.auth.GoogleAuthProvider();
 
 popupProvider.setCustomParameters({
-  hd: process.env.REACT_APP_FIREBASE_ORGANIZATION_DOMAIN
-})
+  hd: process.env.REACT_APP_FIREBASE_ORGANIZATION_DOMAIN,
+});
 
-export default popupProvider
+export default popupProvider;
