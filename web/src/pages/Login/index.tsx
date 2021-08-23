@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useState,
-  useMemo,
-  useEffect,
-  useContext,
-} from "react";
+import { useCallback, useState, useMemo, useEffect, useContext } from "react";
 // import { useNavigate } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -29,7 +23,7 @@ import { appConfig } from "../../config";
 // styles
 import styles from "./Login.module.css";
 
-export default function Login() {
+export default function Login({ isAuthed }: { isAuthed?: boolean | null }) {
   const pageContext = useContext(PageContext); // page context
   const windowDimensions = useWindowDimensions(); // window inner width/height
   const googleAnalytics = useGAFromContext();
@@ -86,16 +80,22 @@ export default function Login() {
 
   // sets visibility after a set period of time
   // because auth isn't instantly ready
+  // TODO: finish fixing this to show login
+  // button ONLY if no auth
   useEffect(() => {
-    const timeoutInterval = pageContext.isInitialLoad ? 750 : 0;
-    const timeout = setTimeout(() => {
-      setLogInButtonVisibility(true);
-      pageContext.setIsInitialLoad(false);
-    }, timeoutInterval);
+    let timeout: number | undefined;
+
+    if (!isAuthed) {
+      const timeoutInterval = pageContext.isInitialLoad ? 750 : 0;
+      timeout = window.setTimeout(() => {
+        setLogInButtonVisibility(true);
+        pageContext.setIsInitialLoad(false);
+      }, timeoutInterval);
+    }
     return () => {
       clearTimeout(timeout);
     };
-  }, [pageContext]);
+  }, [pageContext, isAuthed]);
 
   // set page title
   useEffect(() => {

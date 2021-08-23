@@ -21,7 +21,7 @@ export default function PrivateRoute(props: PrivateRouteProps) {
   const auth = useContext(AuthContext);
 
   const routeComponent = useMemo(() => {
-    if (!auth.hasAuth) return <Login />;
+    if (!auth.hasAuth) return <Login isAuthed={auth.hasAuth} />;
     return auth.userAlreadyExists === UserExistenceState.Exists ? (
       props.element
     ) : (

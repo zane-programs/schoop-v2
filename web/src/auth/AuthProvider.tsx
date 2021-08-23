@@ -27,7 +27,7 @@ interface AuthContextInterface {
   currentUser: User;
   userAlreadyExists: UserExistenceState;
   setUserAlreadyExists: Dispatch<SetStateAction<UserExistenceState>>;
-  hasAuth: boolean | null | undefined;
+  hasAuth?: boolean | null;
   logOut: Function;
 }
 const contextConfig: AuthContextInterface = {
