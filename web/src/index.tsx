@@ -10,24 +10,25 @@ import reportWebVitals from "./reportWebVitals";
 import "./global.css";
 import "focus-visible";
 
-// init error reporting
-Sentry.init({
-  dsn: process.env.REACT_APP_SENTRY_DSN,
-  integrations: [new Integrations.BrowserTracing()],
-
-  // We recommend adjusting this value in production, or using tracesSampler
-  // for finer control
-  tracesSampleRate: 1.0,
-});
-Sentry.configureScope((scope) => {
-  // configure Sentry to send whether we
-  // are in the development environment
-  // or in production
-  scope.setExtra("NODE_ENV", process.env.NODE_ENV);
-});
-
-// init LogRocket
+// telemetry stuff runs in production only
 if (process.env.NODE_ENV === "production") {
+  // init error reporting
+  Sentry.init({
+    dsn: process.env.REACT_APP_SENTRY_DSN,
+    integrations: [new Integrations.BrowserTracing()],
+
+    // We recommend adjusting this value in production, or using tracesSampler
+    // for finer control
+    tracesSampleRate: 1.0,
+  });
+  Sentry.configureScope((scope) => {
+    // configure Sentry to send whether we
+    // are in the development environment
+    // or in production
+    scope.setExtra("NODE_ENV", process.env.NODE_ENV);
+  });
+
+  // init LogRocket
   LogRocket.init(process.env.REACT_APP_LOGROCKET_ID as string);
   LogRocket.getSessionURL((sessionURL) => {
     // add to sentry

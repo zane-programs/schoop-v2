@@ -1,4 +1,11 @@
-import { useState, useContext, useEffect, useMemo, createContext } from "react";
+import {
+  useState,
+  useContext,
+  useEffect,
+  useMemo,
+  createContext,
+  memo,
+} from "react";
 import spacetime, { Spacetime } from "spacetime";
 
 // interfaces
@@ -146,4 +153,4 @@ export const HomeScheduleContext = createContext(
   }
 );
 
-export default HomeSchedule;
+export default memo(HomeSchedule);

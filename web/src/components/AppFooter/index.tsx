@@ -14,7 +14,6 @@ import styles from "./AppFooter.module.css";
 import packageJson from "../../../package.json";
 
 function AppFooter() {
-  const year = new Date().getFullYear();
   const { appName } = useContext(AppConfigContext);
 
   return (
@@ -24,15 +23,23 @@ function AppFooter() {
           <strong>
             {appName} v{packageJson.version}
           </strong>{" "}
-          | &copy; {year} |{" "}
+          {/* TODO: update privacy policy and host with the React stuff */}|{" "}
           <GoogleAnalyticsEventLogger
             category="Navigation"
             action="OpenOutboundLink"
-            label="AboutPage"
+            label="PrivacyPolicy"
           >
-            <NewTabLink href="https://blog.schoop.app/about.html?utm_source=app&amp;utm_medium=footer&amp;utm_campaign=schoop_blog">
-              Learn More
+            <NewTabLink href="https://schoop.app/privacy_policy.html">
+              Privacy
             </NewTabLink>
+          </GoogleAnalyticsEventLogger>{" "}
+          |{" "}
+          <GoogleAnalyticsEventLogger
+            category="Navigation"
+            action="OpenOutboundLink"
+            label="GitHubPage"
+          >
+            <NewTabLink href="https://github.com/Schoop-App">GitHub</NewTabLink>
           </GoogleAnalyticsEventLogger>
         </span>
       </div>

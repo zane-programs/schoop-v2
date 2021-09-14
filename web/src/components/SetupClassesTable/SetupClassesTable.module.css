@@ -46,9 +46,13 @@ table.classesTable .zoomLink {
   padding: var(--tb-pad) var(--lr-pad) var(--tb-pad) 0px;
 }
 
-table.classesTable .className input,
-table.classesTable .zoomLink input,
-table.classesTable .roomNumber input {
+table.classesTable .classColor {
+  width: 100px;
+  text-align: center;
+  padding: var(--tb-pad) var(--lr-pad) var(--tb-pad) 0px;
+}
+
+table.classesTable input {
   width: calc(100% - 20px);
   height: 25px;
   font-family: var(--default-font);

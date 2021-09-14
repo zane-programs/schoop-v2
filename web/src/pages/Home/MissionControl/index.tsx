@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
 // hooks
 import useDate from "../../../hooks/useDate";
@@ -15,7 +15,7 @@ import { Spacetime } from "spacetime";
 // styles
 import styles from "./MissionControl.module.css";
 
-export default function MissionControl() {
+function MissionControl() {
   const date = useDate();
   const { studentInfo } = useContext(HomeContext);
 
@@ -39,6 +39,8 @@ export default function MissionControl() {
     </div>
   );
 }
+
+export default memo(MissionControl);
 
 function StatusCard() {
   const date = useDate();

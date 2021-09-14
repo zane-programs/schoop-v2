@@ -1,4 +1,5 @@
-import React, {
+import {
+  createContext,
   useMemo,
   useState,
   useCallback,
@@ -19,7 +20,7 @@ interface SetupClassesTableContextType {
   classes: StudentClass[];
   setClasses?: (classes: StudentClass[]) => void;
 }
-export const SetupClassesTableContext = React.createContext({
+export const SetupClassesTableContext = createContext({
   classes: [],
 } as SetupClassesTableContextType);
 
@@ -126,6 +127,7 @@ export default function SetupClassesTable(props: SetupClassesTableProps) {
             <th className={styles.className}>Class Name</th>
             <th className={styles.roomNumber}>Room</th>
             <th className={styles.zoomLink}>Link (Optional)</th>
+            <th className={styles.classColor}>Color</th>
           </tr>
           {rows}
         </tbody>
@@ -204,6 +206,9 @@ function PeriodRow({
           value={zoomLink}
           onChange={handleZoomLinkChange}
         />
+      </td>
+      <td className={styles.classColor}>
+        <input type="text" placeholder="Color" />
       </td>
     </tr>
   );

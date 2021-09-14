@@ -1,16 +1,10 @@
 import { useContext, useState, useMemo, useEffect, useRef } from "react";
 
 // context
-// import { AuthContext } from "../../auth/AuthProvider";
 import { AuthenticatedLayoutContext } from "../../App";
-
-// firebase
-// import StudentAdapter from "../../util/StudentAdapter";
-// import app from "../../auth/base";
 
 // interfaces
 import StudentClass from "../../interfaces/StudentClass";
-// import StudentInfo from "../../interfaces/StudentInfo";
 
 // components
 import LoadingPlaceholderScreen from "../../components/LoadingPlaceholderScreen";

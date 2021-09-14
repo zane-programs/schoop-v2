@@ -33,10 +33,15 @@
       html {
         background: 0 0;
       }
+      body.notloaded {
+        overflow: hidden;
+      }
+
       h1 {
         font-family: Karla, sans-serif;
         font-size: 32px;
       }
+
       .loading-overlay {
         position: fixed;
         width: 100%;
@@ -46,20 +51,36 @@
       .loading-overlay.hidden {
         display: none;
       }
-      .loading-overlay h1 {
+      
+      .loading-overlay .spinner {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        margin-top: inherit;
+
+        width: 50px;
+        height: 50px;
+
+        background: transparent;
+
+        border: 3px solid #305475;
+        border-top: 3px solid transparent;
+        border-radius: 50%;
+
+        animation: spinner 550ms linear infinite;
       }
-      body.notloaded {
-        overflow: hidden;
+      @keyframes spinner {
+        from {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
       }
     </style>
   </head>
   <body style="background-color: #fff" class="notloaded">
-    <div class="loading-overlay"><h1>Loading Tweets&hellip;</h1></div>
+    <div class="loading-overlay"><div class="spinner"></div></div>
     <a
       class="twitter-timeline"
       href="https://twitter.com/WindwardSchool?ref_src=twsrc%5Etfw"
