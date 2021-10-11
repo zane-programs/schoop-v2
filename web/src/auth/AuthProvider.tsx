@@ -63,9 +63,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
               return;
             }
             setUserAlreadyExists(UserExistenceState.Exists);
-          } catch (e) {
+          } catch (e: any) {
             // error handling
-            alert(`Auth Error: ${e.message}`);
+            alert(`Auth Error: ${e?.message || "unknown"}`);
           }
         } else {
           // user is not logged in
